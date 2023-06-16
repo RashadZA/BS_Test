@@ -1,4 +1,4 @@
-import 'package:bs_test/src/data/repositories/dio_helper.dart';
+import 'package:bs_test/src/data/repositories/dio_helper/helper.dart';
 import 'package:bs_test/src/presentation/utils/design_utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

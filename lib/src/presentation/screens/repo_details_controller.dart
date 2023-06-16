@@ -1,4 +1,4 @@
-import 'package:bs_test/src/data/repositories/api_repositories.dart';
+import 'package:bs_test/src/data/repositories/dio_helper/api_repositories.dart';
 import 'package:bs_test/src/domain/models/repository_model.dart';
 import 'package:bs_test/src/presentation/utils/design_utils.dart';
 import 'package:get/get.dart';

@@ -1,5 +1,5 @@
 import 'package:bs_test/src/data/datasources/remote/api_call.dart';
-import 'package:bs_test/src/data/repositories/api_repositories.dart';
+import 'package:bs_test/src/data/repositories/dio_helper/api_repositories.dart';
 import 'package:bs_test/src/presentation/screens/home_controller.dart';
 import 'package:bs_test/src/presentation/screens/home_screen.dart';
 import 'package:bs_test/src/presentation/screens/repo_details_controller.dart';
