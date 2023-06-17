@@ -9,11 +9,13 @@ import 'package:bs_test/src/data/repositories/local_db_helper/repository_sort_by
 import 'package:bs_test/src/domain/models/repositories_model.dart';
 import 'package:bs_test/src/presentation/utils/design_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:workmanager/workmanager.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await GSServices.initialize();
   Workmanager().initialize(
     callbackDispatcher,

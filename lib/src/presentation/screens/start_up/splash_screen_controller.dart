@@ -370,6 +370,7 @@ class SplashScreenController extends GetxController{
         return true;
       }else if(result == PermissionStatus.permanentlyDenied){
         await openAppSettings();
+        await getData();
       }
     }
     return false;
