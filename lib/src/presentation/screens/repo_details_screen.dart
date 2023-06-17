@@ -164,12 +164,6 @@ class RepoDetailsScreen extends GetWidget<RepoDetailsController> {
                                     ),
                                     defaultDivider(),
                                     Text(
-                                      getDefaultDateFormat(controller.repositoryModel.createdAt),
-                                      style: TextThemeX.text18.copyWith(
-                                          overflow: TextOverflow.visible),
-                                    ),
-                                    defaultDivider(),
-                                    Text(
                                       "Pushed At",
                                       style: TextThemeX.text18.copyWith(
                                           color: AppColors.greyOpacity08),
