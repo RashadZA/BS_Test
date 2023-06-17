@@ -1,19 +1,55 @@
 # bs_test
- repositories API = https://api.github.com/search/repositories?q=Flutter
- sorted by stars API = https://api.github.com/search/repositories?q=Flutter&sort=updated
- for single item value use url key value.
- Like: "url": "https://api.github.com/repos/flutter/plugins",
-A new Flutter project.
+ Just showing list of Repository and it's details
 
-## Getting Started
+# Dependencies:
+* get
+* get_storage
+* dio
+* intl
+* permission_handler
+* workmanager
+* pagination_view
+* path_provider
+* sqflite
+* infinite_scroll_pagination
+ 
 
-This project is a starting point for a Flutter application.
+# Contents:
 
-A few resources to get you started if this is your first Flutter project:
+* SQfLite
+* StaggeredGridView
+* and many more...
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# The Project:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+You can run this project:
+
+1. Direct on Android Studio Emulator by this [link](https://github.com/RashadZA/BS_Test)
+2. Physical Device. [Apk_link](https://drive.google.com/file/d/1zAFxJrtGJ7CtYi3v56PLgJ6MpFUBQUUa/view?usp=sharing)
+
+# Permission:
+* Storage permission needed
+
+# How to Use the Project:
+
+* After install APK app will ask storage permission.
+* Permission is needed for only for creating DB file.
+* After permission granted data will save in DB for later use.
+* Then open Home screen.
+
+## Inside Structure of Lib Directory Screenshots
+<img src="directoriesStructure/01.png">
+<img src="directoriesStructure/02.png">
+<img src="directoriesStructure/03.png">
+
+## APP Screenshots:
+<img src="screenShots/01.jpg">
+<img src="screenShots/02.jpg">
+<img src="screenShots/03.jpg">
+<img src="screenShots/04.jpg">
+<img src="screenShots/05.jpg">
+<img src="screenShots/06.jpg">
+<img src="screenShots/07.jpg">
+<img src="screenShots/08.jpg">
+<img src="screenShots/09.jpg">
+<img src="screenShots/03.jpg">
