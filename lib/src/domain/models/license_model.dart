@@ -56,7 +56,7 @@ class LicenseModel {
 
   @override
   String toString() {
-    return 'LicenseModel(key: $key, name: $name, spdxId: $spdxId, url: $url, nodeId: $nodeId)';
+    return '{"key": "$key", "name": "$name", "spdxId": "$spdxId", "url": "$url", "nodeId": "$nodeId"}';
   }
 
   @override

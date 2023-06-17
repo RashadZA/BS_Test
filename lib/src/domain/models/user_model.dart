@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 class UserModel {
   String login = "";
   int id = 0;
@@ -86,7 +88,7 @@ class UserModel {
     return <String, dynamic>{
       'login': login,
       'id': id,
-      'nodeId': nodeId,
+      'node_id': nodeId,
       'avatar_url': avatarUrl,
       'gravatar_id': gravatarId,
       'url': url,
@@ -107,24 +109,24 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      login: map['login'] != null ? map['login'] as String : "",
-      id: map['id'] != null ? map['id'] as int : 0,
-      nodeId: map['nodeId'] != null ? map['nodeId'] as String : "",
-      avatarUrl: map['avatar_url'] != null ? map['avatar_url'] as String : "",
-      gravatarId: map['gravatar_id'] != null ? map['gravatar_id'] as String : "",
-      url: map['url'] != null ? map['url'] as String : "",
-      htmlUrl: map['html_url'] != null ? map['html_url'] as String : "",
-      followersUrl: map['followers_url'] != null ? map['followers_url'] as String : "",
-      followingUrl: map['following_url'] != null ? map['following_url'] as String : "",
-      gistsUrl: map['gists_url'] != null ? map['gists_url'] as String : "",
-      starredUrl: map['starred_url'] != null ? map['starred_url'] as String : "",
-      subscriptionsUrl: map['subscriptions_url'] != null ? map['subscriptions_url'] as String : "",
-      organizationsUrl: map['organizations_url'] != null ? map['organizations_url'] as String : "",
-      reposUrl: map['repos_url'] != null ? map['repos_url'] as String : "",
-      eventsUrl: map['events_url'] != null ? map['events_url'] as String : "",
-      receivedEventsUrl: map['received_events_url'] != null ? map['received_events_url'] as String : "",
-      type: map['type'] != null ? map['type'] as String : "",
-      siteAdmin: map['site_admin'] != null ? map['site_admin'] as bool : false,
+      login: map['login'] != null ? map['login'] is String ? map['login'] as String : "" : "",
+      id: map['id'] != null ? map['login'] is int ? map['id'] as int : 0 : 0,
+      nodeId: map['node_id'] != null ? map['login'] is String ? map['node_id'] as String : "" : "",
+      avatarUrl: map['avatar_url'] != null ? map['login'] is String ? map['avatar_url'] as String : "" : "",
+      gravatarId: map['gravatar_id'] != null ? map['login'] is String ? map['gravatar_id'] as String : "" : "",
+      url: map['url'] != null ? map['login'] is String ? map['url'] as String : "" : "",
+      htmlUrl: map['html_url'] != null ? map['login'] is String ? map['html_url'] as String : "" : "",
+      followersUrl: map['followers_url'] != null ? map['login'] is String ? map['followers_url'] as String : "" : "",
+      followingUrl: map['following_url'] != null ? map['login'] is String ? map['following_url'] as String : "" : "",
+      gistsUrl: map['gists_url'] != null ? map['login'] is String ? map['gists_url'] as String : "" : "",
+      starredUrl: map['starred_url'] != null ? map['login'] is String ? map['starred_url'] as String : "" : "",
+      subscriptionsUrl: map['subscriptions_url'] != null ? map['login'] is String ? map['subscriptions_url'] as String : "" : "",
+      organizationsUrl: map['organizations_url'] != null ? map['login'] is String ? map['organizations_url'] as String : "" : "",
+      reposUrl: map['repos_url'] != null ? map['login'] is String ? map['repos_url'] as String : "" : "",
+      eventsUrl: map['events_url'] != null ? map['login'] is String ? map['events_url'] as String : "" : "",
+      receivedEventsUrl: map['received_events_url'] != null ? map['login'] is String ? map['received_events_url'] as String : "" : "",
+      type: map['type'] != null ? map['login'] is String ? map['type'] as String : "" : "",
+      siteAdmin: map['site_admin'] != null ? map['login'] is bool ? map['site_admin'] as bool : false : false,
     );
   }
 
@@ -134,7 +136,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(login: $login, id: $id, nodeId: $nodeId, avatarUrl: $avatarUrl, gravatarId: $gravatarId, url: $url, htmlUrl: $htmlUrl, followersUrl: $followersUrl, followingUrl: $followingUrl, gistsUrl: $gistsUrl, starredUrl: $starredUrl, subscriptionsUrl: $subscriptionsUrl, organizationsUrl: $organizationsUrl, reposUrl: $reposUrl, eventsUrl: $eventsUrl, receivedEventsUrl: $receivedEventsUrl, type: $type, siteAdmin: $siteAdmin)';
+    return '{"login": "$login", "id": $id, "nodeId": "$nodeId", "avatarUrl": "$avatarUrl", "gravatarId": "$gravatarId", "url": "$url", "htmlUrl": "$htmlUrl", "followersUrl": "$followersUrl", "followingUrl": "$followingUrl", "gistsUrl": "$gistsUrl", "starredUrl": "$starredUrl", "subscriptionsUrl": "$subscriptionsUrl", "organizationsUrl": "$organizationsUrl", "reposUrl": "$reposUrl", "eventsUrl": "$eventsUrl", "receivedEventsUrl": "$receivedEventsUrl", "type": "$type", "siteAdmin": "$siteAdmin"}';
   }
 
   @override

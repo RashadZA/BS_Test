@@ -4,7 +4,9 @@ import 'package:bs_test/src/presentation/screens/home_controller.dart';
 import 'package:bs_test/src/presentation/screens/home_screen.dart';
 import 'package:bs_test/src/presentation/screens/repo_details_controller.dart';
 import 'package:bs_test/src/presentation/screens/repo_details_screen.dart';
-import 'package:bs_test/src/presentation/screens/unknown_404_screen.dart';
+import 'package:bs_test/src/presentation/screens/start_up/splash_screen.dart';
+import 'package:bs_test/src/presentation/screens/start_up/splash_screen_controller.dart';
+import 'package:bs_test/src/presentation/screens/start_up/unknown_404_screen.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';
@@ -15,6 +17,13 @@ class AppPages {
     page: () => const Unknown404Screen(),
   );
   static final List<GetPage<dynamic>> routes = [
+    GetPage(
+      name: _Paths.splash,
+      page: () => const SplashScreen(),
+      binding: BindingsBuilder(
+            () => Get.lazyPut<SplashScreenController>(() => SplashScreenController()),
+      ),
+    ),
     GetPage(
       name: _Paths.home,
       page: () => const HomeScreen(),

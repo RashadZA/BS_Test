@@ -1,3 +1,4 @@
+import 'package:bs_test/src/presentation/components/contants.dart';
 import 'package:bs_test/src/presentation/utils/design_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class Unknown404Screen extends StatelessWidget {
         child: Text(
           '404',
           style: TextThemeX.text18,
-        ),
+        ).defaultContainer(),
       ),
     );
   }

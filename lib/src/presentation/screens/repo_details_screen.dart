@@ -14,58 +14,58 @@ class RepoDetailsScreen extends GetWidget<RepoDetailsController> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          width: Get.width,
-          height: Get.height,
-          color: AppColors.whiteOpacity08,
-          child: Obx(
-            () => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: 40,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                      color: AppColors.greyOpacity08,
-                    boxShadow: [
-                      BoxShadow(
-                          color: AppColors.whiteOpacity04,
-                        blurRadius: 2
-                      )
-                    ]
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      customIconButton(function: () {
-                        Get.back();
-                      }),
-                      Container(
-                          height: 40,
-                          alignment: Alignment.centerLeft,
-                          width: CustomHW.getWidthWithoutPaddingAndValue(
-                              width: defaultIconButtonWidth, padding: 0.0),
-                          padding: const EdgeInsets.only(
-                              left: defaultLeftRightPadding),
-                          child: Text(
-                            controller.repositoryModel.name,
-                            style: TextThemeX.text18
-                                .copyWith(fontWeight: FontWeight.bold),
-                          ))
-                    ],
-                  ),
+      body: Container(
+        width: Get.width,
+        height: Get.height,
+        color: AppColors.whiteOpacity08,
+        child: Obx(
+          () => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                height: appBarHeight,
+                width: Get.width,
+                decoration: BoxDecoration(
+                    color: AppColors.greyOpacity08,
+                  boxShadow: [
+                    BoxShadow(
+                        color: AppColors.whiteOpacity04,
+                      blurRadius: 2
+                    )
+                  ]
                 ),
-                Expanded(
-                  child: Container(
-                    color: AppColors.greyOpacity04,
-                    child: controller.isLoading.isTrue
-                        ? const Center(
-                            child: DefaultCircularProgressIndicator(),
-                          )
-                        : Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customIconButton(function: () {
+                      Get.back();
+                    }),
+                    Container(
+                        height: appBarHeight,
+                        alignment: Alignment.centerLeft,
+                        width: CustomHW.getWidthWithoutPaddingAndValue(
+                            width: defaultIconButtonWidth, padding: 0.0),
+                        padding: const EdgeInsets.only(
+                            left: defaultLeftRightPadding),
+                        child: Text(
+                          controller.repositoryModel.name,
+                          style: TextThemeX.text18
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ))
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  color: AppColors.greyOpacity04,
+                  child: controller.isLoading.isTrue
+                      ? const Center(
+                          child: DefaultCircularProgressIndicator(),
+                        )
+                      : SingleChildScrollView(
+                        child: Container(
                             width: Get.width,
                             // color: AppColors.white60,
                             padding: const EdgeInsets.all(defaultAllPadding),
@@ -80,7 +80,6 @@ class RepoDetailsScreen extends GetWidget<RepoDetailsController> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       UserAvatar(
-                                        radius: 60,
                                         imageUrl: controller
                                             .repositoryModel.owner.avatarUrl,
                                       ),
@@ -102,7 +101,7 @@ class RepoDetailsScreen extends GetWidget<RepoDetailsController> {
                                   ).defaultContainer(),
                                 ),
                                 const SizedBox(
-                                  height: 5,
+                                  height: defaultAllPadding,
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,13 +184,16 @@ class RepoDetailsScreen extends GetWidget<RepoDetailsController> {
                                     ),
                                   ],
                                 ).defaultContainer(),
+                                const SizedBox(
+                                  height: 30,
+                                ),
                               ],
                             ),
                           ),
-                  ),
-                )
-              ],
-            ),
+                      ),
+                ),
+              )
+            ],
           ),
         ),
       ),

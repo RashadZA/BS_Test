@@ -15,7 +15,7 @@ class AppTheme {
     iconTheme: const IconThemeData(size: 24),
     appBarTheme: AppBarTheme(
       elevation: 2,
-      toolbarHeight: 40,
+      toolbarHeight: appBarHeight,
       titleTextStyle: TextThemeX.text18.copyWith(
         color: AppColors.white,
         fontWeight: FontWeight.w600,

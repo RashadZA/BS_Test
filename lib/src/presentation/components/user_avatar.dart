@@ -8,7 +8,7 @@ class UserAvatar extends StatelessWidget {
   const UserAvatar({
     Key? key,
     this.imageUrl,
-    this.radius = 50,
+    this.radius = 80,
     this.color,
   }) : super(key: key);
 
@@ -24,7 +24,7 @@ class UserAvatar extends StatelessWidget {
       height: radius,
       padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
-        color: color ?? AppColors.greyOpacity04,
+        color: color ?? AppColors.transparent,
         shape: BoxShape.circle,
       ),
       child: selectAPIImager(image: imageUrl),

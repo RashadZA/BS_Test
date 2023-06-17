@@ -23,6 +23,14 @@ class APIRepository {
     }
     return RepositoriesModel.fromMap({});
   }
+  Future<RepositoriesModel> getRepositoriesWithSort({required String sortType}) async {
+    try {
+      return await apiCall.getRepositoriesWithSort(sort: sortType);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return RepositoriesModel.fromMap({});
+  }
 
   FutureOr<RepositoryModel> getRepoDetails({
     required String repoID,
@@ -33,5 +41,22 @@ class APIRepository {
       debugPrint(e.toString());
     }
     return RepositoryModel.fromMap({});
+  }
+
+  Future<List<RepositoryModel>> getPagingRepositories({required int page, required int pageItems}) async {
+    try {
+      return await apiCall.getPagingRepositories(page: page,pageItems: pageItems);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return <RepositoryModel>[];
+  }
+  Future<List<RepositoryModel>> getPagingRepositoriesWithSort({required int page, required int pageItems, required String sort}) async {
+    try {
+      return await apiCall.getPagingRepositoriesWithSort(page: page,pageItems: pageItems, sort: sort);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return <RepositoryModel>[];
   }
 }

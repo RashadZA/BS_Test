@@ -16,6 +16,7 @@ Image selectAPIImager({
   }
   Image imageFromNet = Image.network(
     image,
+    fit: BoxFit.cover,
     errorBuilder: (context, error, stackTrace) =>
         selectImage(defaultImage ?? AppImages.avatar),
   );
