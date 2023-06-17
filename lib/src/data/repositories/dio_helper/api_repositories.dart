@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'base_service.dart';
 
 class APIRepository {
-  final APICall apiCall = Get.find<APICall>();
+  final APICall apiCall = Get.put(APICall());
 
   void dispose() {
     apiCall.dispose();

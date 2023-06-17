@@ -21,15 +21,7 @@ class SplashScreen extends GetWidget<SplashScreenController> {
           width: Get.width,
           height: Get.height,
           child: Center(
-            child: Obx(() => controller.internetStatus.isTrue ? SizedBox(
-              height: 110,
-              child: Column(
-                children: [
-                  const DefaultCircularProgressIndicator(),
-                  Text("Data is saving in Database",style: TextThemeX.text18,)
-                ],
-              ).defaultContainer(),
-            ) : const DefaultCircularProgressIndicator().defaultContainer()),
+            child: const DefaultCircularProgressIndicator().defaultContainer(),
           ),
         ),
       ),

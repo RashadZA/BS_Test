@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bs_test/src/config/router/app_pages.dart';
 import 'package:bs_test/src/data/repositories/dio_helper/api_repositories.dart';
 import 'package:bs_test/src/data/repositories/dio_helper/internet.dart';
@@ -10,6 +12,7 @@ import 'package:bs_test/src/domain/models/repository_model.dart';
 import 'package:bs_test/src/presentation/utils/design_utils.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:workmanager/workmanager.dart';
 
 class SplashScreenController extends GetxController{
   final APIRepository apiRepository = Get.find<APIRepository>();
@@ -27,17 +30,49 @@ class SplashScreenController extends GetxController{
   }
   Future<void> init() async {
     internetStatus.value = await Internet().isAvailable();
-    if(internetStatus.value){
-      repoMap = await apiRepository.getRepositories();
-      update();
-      repoMapSortByStars = await apiRepository.getRepositoriesWithSort(sortType: stars);
-      update();
-      repoMapSortByUpdate = await apiRepository.getRepositoriesWithSort(sortType: updated);
-      update();
-      repoList.value = repoMap.items;
-      await saveInTable();
+    if(!await requestPermission(Permission.storage)){
+      await requestPermission(Permission.storage);
     }
-   Get.offAllNamed(Routes.home);
+    if (await requestPermission(Permission.storage)) {
+      getData();
+    }else{
+      await requestPermission(Permission.storage);
+      getData();
+
+    }
+  }
+  Future<void> getData() async {
+    if (await requestPermission(Permission.storage)) {
+      if (internetStatus.value) {
+        repoMap = await apiRepository.getRepositories();
+        update();
+        repoMapSortByStars =
+        await apiRepository.getRepositoriesWithSort(sortType: stars);
+        update();
+        repoMapSortByUpdate =
+        await apiRepository.getRepositoriesWithSort(sortType: updated);
+        update();
+        repoList.value = repoMap.items;
+        await saveInTable();
+      }
+      registerWorkManager();
+      Get.offAllNamed(Routes.home);
+    }
+  }
+  Future<void> registerWorkManager() async{
+    Platform.isAndroid
+        ?  Workmanager().registerPeriodicTask(
+        periodicTask,
+        periodic30MinutesTask,
+        frequency: const Duration(minutes: 30),
+        constraints: Constraints(networkType: NetworkType.connected)
+    ) :
+    Workmanager().registerOneOffTask(
+        oneOffTask,
+        oneOffTaskForIOS,
+        constraints: Constraints(networkType: NetworkType.connected),
+        initialDelay: const Duration(seconds: 05)
+    );
   }
 
   Future<void> saveInTable() async {
@@ -322,6 +357,8 @@ class SplashScreenController extends GetxController{
           );
         }
       });
+    }else{
+      await requestPermission(Permission.storage);
     }
   }
   Future<bool> requestPermission(Permission permission) async {
@@ -331,6 +368,8 @@ class SplashScreenController extends GetxController{
       var result = await permission.request();
       if (result == PermissionStatus.granted) {
         return true;
+      }else if(result == PermissionStatus.permanentlyDenied){
+        await openAppSettings();
       }
     }
     return false;
