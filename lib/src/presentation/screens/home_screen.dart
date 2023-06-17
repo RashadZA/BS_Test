@@ -23,11 +23,11 @@ class HomeScreen extends GetWidget<HomeController> {
                 return  [
                   PopupMenuItem(
                     value: stars,
-                    child: Text("Sort by Star",style: TextThemeX.text16.copyWith(color: controller.sortBy.value == stars ? AppColors.blueAccent : AppColors.black),),
+                    child: controller.sortBy.value != stars ? Text("Sort by Star",style: TextThemeX.text16,) : const Text(""),
                   ),
                   PopupMenuItem(
                     value: updated,
-                    child: Text("Sort by Updated",style: TextThemeX.text16.copyWith(color: controller.sortBy.value == updated ? AppColors.blueAccent : AppColors.black),),
+                    child: controller.sortBy.value != updated ? Text("Sort by Updated",style: TextThemeX.text16) : const Text(""),
                   )
                 ];
               },
